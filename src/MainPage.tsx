@@ -6,6 +6,7 @@ import { createTask, updateTask, deleteTasks, useQuery, getTasks } from "wasp/cl
 import waspLogo from "./waspLogo.png";
 
 import "./Main.css";
+import { Button } from "./components/ui/button";
 
 export const MainPage = ({ user }: { user: AuthUser }) => {
   const { data: tasks, isLoading, error } = useQuery(getTasks);
@@ -24,6 +25,12 @@ export const MainPage = ({ user }: { user: AuthUser }) => {
           {`'s tasks :)`}
         </h1>
       )}
+      <h1 className="text-3xl font-bold underline">
+  Hello world!
+</h1>
+<div className="container">
+      <Button variant="outline">This works</Button>
+    </div>
       <NewTaskForm />
       {tasks && <TasksList tasks={tasks} />}
       <div className="buttons">
