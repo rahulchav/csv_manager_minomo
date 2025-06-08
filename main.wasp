@@ -13,13 +13,37 @@ app csv_manager {
       //email: {} // https://wasp.sh/docs/guides/email-auth
     },
     onAuthFailedRedirectTo: "/login",
-  }
+  },
+  client: {
+    rootComponent: import App from "@src/App",
+  },
+  server: {
+    middlewareConfigFn: import { serverMiddlewareFn } from "@src/globalMiddleware"
+  },
 }
 
-route RootRoute { path: "/", to: MainPage }
+route RootRoute { 
+  path: "/", 
+  to: RedirectPage 
+}
+
+page RedirectPage {
+  component: import { RedirectPage } from "@src/RedirectPage"
+}
+
+route CsvManagerRoute { 
+  path: "/csv-manager", 
+  to: DashboardPage 
+}
+
 page MainPage {
   authRequired: true,
   component: import { MainPage } from "@src/MainPage"
+}
+
+page DashboardPage {
+  authRequired: true,
+  component: import { Dashboard } from "@src/pages/Dashboard"
 }
 
 route LoginRoute { path: "/login", to: LoginPage }
@@ -53,4 +77,42 @@ action updateTask {
 action deleteTasks {
   fn: import { deleteTasks } from "@src/tasks/actions",
   entities: [Task],
+}
+
+query getCsvFiles {
+  // We specify the JS implementation of our query (which is an async JS function)
+  fn: import { getCsvFiles } from "@src/models/getCsvFiles",
+  // We tell Wasp that this query is doing something with the `Task` entity. With that, Wasp will
+  // automatically refresh the results of this query when tasks change.
+  entities: [CsvFile]
+}
+
+action uploadCsvFile {
+  fn: import { uploadCsvFile } from "@src/models/getCsvFiles",
+  entities: [CsvFile, CsvRow],
+}
+
+action reorderCsvColumns {
+  fn: import { reorderCsvColumns } from "@src/models/getCsvFiles",
+  entities: [CsvFile],
+}
+
+action updateRowData {
+  fn: import { updateRowData } from "@src/models/csvRow",
+  entities: [CsvRow],
+}
+
+query getCsvRows {
+  fn: import { getCsvRows } from "@src/models/csvRow",
+  entities: [CsvRow]
+}
+
+action deleteCsvFile {
+  fn: import { deleteCsvFile } from "@src/models/getCsvFiles",
+  entities: [CsvFile],
+}
+
+action createCsvRow {
+  fn: import { createCsvRow } from "@src/models/csvRow",
+  entities: [CsvRow],
 }
