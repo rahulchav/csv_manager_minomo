@@ -1,36 +1,80 @@
-// src/App.tsx
+/**
+ * App Component
+ * 
+ * The root component of the application that handles:
+ * - Global layout and styling
+ * - Theme management (dark/light mode)
+ * - Navigation bar visibility logic
+ * - Toast notifications
+ * - Routing outlet
+ */
+
 import { Outlet, useLocation } from "react-router-dom";
+import { useEffect, useState, useCallback } from "react";
 import { Toaster } from "./components/ui/toaster";
-import "./main.css"
 import { Navbar } from "./components/Navbar";
-import { useEffect, useState } from "react";
+import "./main.css";
+
+// Routes where the navbar should be hidden
+const HIDDEN_NAVBAR_ROUTES = ["/login", "/signup"] as const;
+
+// Local storage key for theme preference
+const THEME_STORAGE_KEY = 'darkMode';
+
+/**
+ * Loads the initial theme preference from localStorage
+ * @returns {boolean} The saved theme preference or false if not found
+ */
+const loadInitialTheme = (): boolean => {
+  try {
+    const stored = localStorage.getItem(THEME_STORAGE_KEY);
+    return stored ? JSON.parse(stored) : false;
+  } catch (error) {
+    console.error('Error loading theme preference:', error);
+    return false;
+  }
+};
 
 export default function App() {
-    const location = useLocation();
-  const hideNavbarRoutes = ["/login", "/signup"];
+  // Get current route location
+  const location = useLocation();
 
-  const shouldShowNavbar = !hideNavbarRoutes.includes(location.pathname);
+  // State for theme management
+  const [darkMode, setDarkMode] = useState<boolean>(loadInitialTheme);
 
-  const [darkMode, setDarkMode] = useState<boolean>(() => {
-    // Load initial value from localStorage
-    const stored = localStorage.getItem('darkMode');
-    return stored ? JSON.parse(stored) : false;
-  });
+  /**
+   * Determines if navbar should be shown based on current route
+   */
+  const shouldShowNavbar = !HIDDEN_NAVBAR_ROUTES.includes(location.pathname as typeof HIDDEN_NAVBAR_ROUTES[number]);
 
-  useEffect(() => {
-    // Add or remove 'dark' class on <body>
-    if (darkMode) {
-      document.body.classList.add('dark');
-    } else {
-      document.body.classList.remove('dark');
+  /**
+   * Handles theme changes and persists the preference
+   */
+  const handleThemeChange = useCallback((isDark: boolean) => {
+    setDarkMode(isDark);
+    try {
+      localStorage.setItem(THEME_STORAGE_KEY, JSON.stringify(isDark));
+    } catch (error) {
+      console.error('Error saving theme preference:', error);
     }
+  }, []);
 
-    // Save preference to localStorage
-    localStorage.setItem('darkMode', JSON.stringify(darkMode));
+  // Effect to apply theme class to body
+  useEffect(() => {
+    document.body.classList.toggle('dark', darkMode);
   }, [darkMode]);
+
   return (
     <div className="min-h-screen bg-background text-foreground">
-      {shouldShowNavbar && <Navbar setDarkMode={setDarkMode} darkMode={darkMode} />}
+      {/* Conditional navbar rendering */}
+      {shouldShowNavbar && (
+        <Navbar 
+          setDarkMode={handleThemeChange} 
+          darkMode={darkMode} 
+        />
+      )}
+      
+      {/* Main content area */}
       <div className="p-4">
         <Toaster />
         <Outlet />

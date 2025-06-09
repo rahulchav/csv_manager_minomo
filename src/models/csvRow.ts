@@ -10,7 +10,7 @@ export const getCsvRows: GetCsvRows<FetchArgs, CsvRow[]> = async ({ csvFileId },
   if (!context.user) throw new HttpError(401);
   const data = await context.entities.CsvRow.findMany({
     where: { csvFileId },
-    orderBy: { rowIndex: 'desc' },
+    orderBy: { rowIndex: 'asc' },
   });
 
   return data;

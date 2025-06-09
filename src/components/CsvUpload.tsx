@@ -13,10 +13,11 @@ export interface CsvData {
 }
 
 interface CsvUploadProps {
-  onDataParsed: (data: CsvData) => void;
+  onDataParsed: (data: CsvData, fileSize: number) => void;
+  selectedFileDetails: {fileName: string, fileSize : number} | null;
 }
 
-export function CsvUpload({ onDataParsed }: CsvUploadProps) {
+export function CsvUpload({ onDataParsed, selectedFileDetails }: CsvUploadProps) {
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
 
   const handleFileReset = () => {
@@ -26,7 +27,7 @@ export function CsvUpload({ onDataParsed }: CsvUploadProps) {
       columnHeaders: [],
       rowCount: 0,
       csvRows: [],
-    });
+    }, 0 );
   };
 
   const onDrop = useCallback(
@@ -53,7 +54,7 @@ export function CsvUpload({ onDataParsed }: CsvUploadProps) {
               columnHeaders: headers,
               rowCount: csvRows.length,
               csvRows,
-            });
+            }, file?.size || 0);
           },
           header: false,
           skipEmptyLines: true,
@@ -71,7 +72,7 @@ export function CsvUpload({ onDataParsed }: CsvUploadProps) {
     maxFiles: 1,
   });
 
-  if (uploadedFile) {
+  if (selectedFileDetails && selectedFileDetails.fileName) {
     return (
       <div className="mt-2">
         <Card className="p-4">
@@ -79,9 +80,9 @@ export function CsvUpload({ onDataParsed }: CsvUploadProps) {
             <div className="flex items-center space-x-4">
               <FileText className="h-8 w-8 text-muted-foreground" />
               <div>
-                <p className="font-semibold">{uploadedFile.name}</p>
+                <p className="font-semibold">{selectedFileDetails.fileName}</p>
                 <p className="text-sm text-muted-foreground">
-                  {formatFileSize(uploadedFile.size)}
+                  {formatFileSize(Number(selectedFileDetails.fileSize))}
                 </p>
               </div>
             </div>

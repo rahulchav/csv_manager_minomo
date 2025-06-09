@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 interface StepData {
   title: string;
@@ -10,7 +10,7 @@ interface StepperProps {
   currentStep: number;
 }
 
-export function Stepper({ steps, currentStep }: StepperProps) {
+const StepperComponent = ({ steps, currentStep }: StepperProps) => {
   return (
     <div>
       <div className="flex items-center justify-between relative">
@@ -54,4 +54,4 @@ export function Stepper({ steps, currentStep }: StepperProps) {
   );
 }
 
-export default Stepper; 
+export const Stepper = memo(StepperComponent); 

@@ -182,42 +182,45 @@ export function DataTable({
 
   // --- FIX END ---
 
-  const tableColumns = useMemo<ColumnDef<Record<string, string>>[]>(
-    () => [
-      {
-        id: "select",
-        header: ({ table }) => (
-          <input
-            type="checkbox"
-            checked={table.getIsAllPageRowsSelected()}
-            onChange={table.getToggleAllPageRowsSelectedHandler()}
-            className="w-4 h-4"
-          />
-        ),
-        cell: ({ row }) => (
-          <input
-            type="checkbox"
-            checked={row.getIsSelected()}
-            onChange={row.getToggleSelectedHandler()}
-            className="w-4 h-4"
-            onClick={(e) => e.stopPropagation()}
-          />
-        ),
-        size: 40,
-        enableSorting: false,
-        enableColumnFilter: false,
-      },
-      ...columnsOrder.map((column) => ({
-        accessorKey: column,
-        header: column,
-        // cell: (info) => info.getValue(),
-        enableColumnFilter: true,
-        enableSorting: true,
-        filterFn: fuzzyFilter,
-      })),
-    ],
-    [columnsOrder]
-  );
+  const tableColumns = useMemo<ColumnDef<Record<string, string>>[]>(() => {
+    const baseColumns = columnsOrder.map((column) => ({
+      accessorKey: column,
+      header: column,
+      enableColumnFilter: true,
+      enableSorting: true,
+      filterFn: fuzzyFilter,
+    }));
+  
+    if (onlyPreview) {
+      return baseColumns;
+    }
+  
+    const selectColumn: ColumnDef<Record<string, string>> = {
+      id: "select",
+      header: ({ table }) => (
+        <input
+          type="checkbox"
+          checked={table.getIsAllPageRowsSelected()}
+          onChange={table.getToggleAllPageRowsSelectedHandler()}
+          className="w-4 h-4"
+        />
+      ),
+      cell: ({ row }) => (
+        <input
+          type="checkbox"
+          checked={row.getIsSelected()}
+          onChange={row.getToggleSelectedHandler()}
+          className="w-4 h-4"
+          onClick={(e) => e.stopPropagation()}
+        />
+      ),
+      size: 40,
+      enableSorting: false,
+      enableColumnFilter: false,
+    };
+  
+    return [selectColumn, ...baseColumns];
+  }, [columnsOrder, onlyPreview]);  
 
   const tempTable = useReactTable({
     data: editedData, // Use editedData here as it contains current edits
@@ -298,32 +301,58 @@ export function DataTable({
     if(updateRowData) updateRowData(changed);
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent, currentRowIdxOnPage: number, key: string) => {
-    // Skip if trying to edit the select column
+  const handleKeyDown = (
+    e: React.KeyboardEvent,
+    currentRowIdxOnPage: number,
+    key: string
+  ) => {
+    // Early return if current column is 'select'
     if (key === "select") return;
-
-    const visibleColumns = table.getVisibleFlatColumns().map((col) => col.id);
+  
+    // Filter out the 'select' column
+    const visibleColumns = table
+      .getVisibleFlatColumns()
+      .map((col) => col.id)
+      .filter((id) => id !== "select");
+  
     const colIdx = visibleColumns.indexOf(key);
-
     const currentPaginatedRows = currentPageRows;
-
+  
     if (e.key === "ArrowRight") {
       if (colIdx < visibleColumns.length - 1) {
-        setActiveCell({ row: currentRowIdxOnPage, column: visibleColumns[colIdx + 1] });
+        setActiveCell({
+          row: currentRowIdxOnPage,
+          column: visibleColumns[colIdx + 1],
+        });
       } else if (currentRowIdxOnPage < currentPaginatedRows.length - 1) {
-        setActiveCell({ row: currentRowIdxOnPage + 1, column: visibleColumns[0] });
+        setActiveCell({
+          row: currentRowIdxOnPage + 1,
+          column: visibleColumns[0],
+        });
       } else if (table.getCanNextPage()) {
         table.nextPage();
-        setActiveCell({ row: 0, column: visibleColumns[0] });
+        setActiveCell({
+          row: 0,
+          column: visibleColumns[0],
+        });
       }
     } else if (e.key === "ArrowLeft") {
       if (colIdx > 0) {
-        setActiveCell({ row: currentRowIdxOnPage, column: visibleColumns[colIdx - 1] });
+        setActiveCell({
+          row: currentRowIdxOnPage,
+          column: visibleColumns[colIdx - 1],
+        });
       } else if (currentRowIdxOnPage > 0) {
-        setActiveCell({ row: currentRowIdxOnPage - 1, column: visibleColumns[visibleColumns.length - 1] });
+        setActiveCell({
+          row: currentRowIdxOnPage - 1,
+          column: visibleColumns[visibleColumns.length - 1],
+        });
       } else if (table.getCanPreviousPage()) {
         table.previousPage();
-        setActiveCell({ row: table.getState().pagination.pageSize - 1, column: visibleColumns[visibleColumns.length - 1] });
+        setActiveCell({
+          row: table.getState().pagination.pageSize - 1,
+          column: visibleColumns[visibleColumns.length - 1],
+        });
       }
     } else if (e.key === "ArrowDown") {
       if (currentRowIdxOnPage < currentPaginatedRows.length - 1) {
@@ -337,10 +366,14 @@ export function DataTable({
         setActiveCell({ row: currentRowIdxOnPage - 1, column: key });
       } else if (table.getCanPreviousPage()) {
         table.previousPage();
-        setActiveCell({ row: table.getState().pagination.pageSize - 1, column: key });
+        setActiveCell({
+          row: table.getState().pagination.pageSize - 1,
+          column: key,
+        });
       }
     }
   };
+  
 
   const handleDragStart = (event: DragStartEvent) => {
     setDraggedColumn(event.active.id as string);

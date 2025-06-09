@@ -20,6 +20,7 @@ import { DataTable } from "./NotionTable";
 export function ImportCsvDialog() {
   const [open, setOpen] = useState(false);
   const [currentStep, setCurrentStep] = useState(1);
+  const [uploadedFileDetails, setUploadedFileDetails] = useState<{fileName: string, fileSize : number} | null>(null);
   const [batchData, setBatchData] = useState<CsvData & {fileName: string}>({
     originalName: "",
     columnHeaders: [],
@@ -57,14 +58,16 @@ export function ImportCsvDialog() {
         csvRows: [],
         fileName: "",
     });
+    setUploadedFileDetails(null);
   };
 
   const isStepOneValid = batchData.fileName && batchData.originalName && batchData.rowCount > 0;
 
-  const handleDataParsed = (data: CsvData) => {
+  const handleDataParsed = (data: CsvData, fileSize: number) => {
     // Handle the parsed CSV data
     const updatedData : CsvData & {fileName: string} = {...data, fileName : batchData.fileName}
     setBatchData(updatedData);
+    setUploadedFileDetails({fileName: data.originalName, fileSize});
   };
 
   const handleSubmit = async () => {
@@ -99,7 +102,7 @@ export function ImportCsvDialog() {
                 placeholder="Enter batch name"
               />
             </div>
-            <CsvUpload onDataParsed={handleDataParsed} />
+            <CsvUpload onDataParsed={handleDataParsed} selectedFileDetails={uploadedFileDetails} />
           </div>
         );
 

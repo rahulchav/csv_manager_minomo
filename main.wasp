@@ -36,11 +36,6 @@ route CsvManagerRoute {
   to: DashboardPage 
 }
 
-page MainPage {
-  authRequired: true,
-  component: import { MainPage } from "@src/MainPage"
-}
-
 page DashboardPage {
   authRequired: true,
   component: import { Dashboard } from "@src/pages/Dashboard"
@@ -56,34 +51,8 @@ page SignupPage {
   component: import { SignupPage } from "@src/auth/SignupPage"
 }
 
-query getTasks {
-  // We specify the JS implementation of our query (which is an async JS function)
-  fn: import { getTasks } from "@src/tasks/queries",
-  // We tell Wasp that this query is doing something with the `Task` entity. With that, Wasp will
-  // automatically refresh the results of this query when tasks change.
-  entities: [Task]
-}
-
-action createTask {
-  fn: import { createTask } from "@src/tasks/actions",
-  entities: [Task]
-}
-
-action updateTask {
-  fn: import { updateTask } from "@src/tasks/actions",
-  entities: [Task]
-}
-
-action deleteTasks {
-  fn: import { deleteTasks } from "@src/tasks/actions",
-  entities: [Task],
-}
-
 query getCsvFiles {
-  // We specify the JS implementation of our query (which is an async JS function)
   fn: import { getCsvFiles } from "@src/models/getCsvFiles",
-  // We tell Wasp that this query is doing something with the `Task` entity. With that, Wasp will
-  // automatically refresh the results of this query when tasks change.
   entities: [CsvFile]
 }
 
