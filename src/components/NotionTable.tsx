@@ -102,14 +102,14 @@ function DraggableHeader({ header, isSelectColumn = false }: { header: Header<an
           onClick={column.getCanSort() ? column.getToggleSortingHandler() : undefined}
         >
           {flexRender(column.columnDef.header, header.getContext())}
-          {column.getCanSort() && (
+          {/* {column.getCanSort() && (
             <span className="ml-2">
               {{
                 asc: <ArrowUpDown className="h-4 w-4" />,
                 desc: <ArrowUpDown className="h-4 w-4" />,
               }[column.getIsSorted() as string] ?? <ArrowUpDown className="h-4 w-4 text-muted-foreground" />}
             </span>
-          )}
+          )} */}
         </div>
 
         {/* Drag Handle - Only show if not select column */}
@@ -241,7 +241,7 @@ export function DataTable({
     data: editedData, // Use editedData as the source for the main table as well
     columns: tableColumns,
     state: onlyPreview
-      ? {}
+      ? {pagination}
       : {
           sorting,
           columnFilters,

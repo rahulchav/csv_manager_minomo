@@ -30,7 +30,7 @@ export function DeleteCsvFile({ csvFile }: DeleteCsvFileProps) {
   return (
     <Dialog>
         <DialogTrigger asChild>
-            <div>
+            <div className="cursor-pointer">
                 <TooltipProvider>
                     <Tooltip>
                     <TooltipTrigger asChild>

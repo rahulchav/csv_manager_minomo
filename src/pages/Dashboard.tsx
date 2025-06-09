@@ -83,19 +83,19 @@ export const Dashboard = function() {
           {/* File name section */}
           <div>
             <p className="text-xs text-muted-foreground">File Name</p>
-            <p className="font-medium text-sm">{batch.originalName}</p>
+            <p className="font-medium text-sm wor" style={{wordWrap: "break-word"}}>{batch.originalName}</p>
           </div>
           {/* Upload date section */}
           <div>
             <p className="text-xs text-muted-foreground">Uploaded At</p>
-            <p className="font-medium text-sm">
+            <p className="font-medium text-sm style={{wordWrap: 'break-word'}}">
               {formatDate(batch.uploadedAt)}
             </p>
           </div>
           {/* Row count section */}
           <div>
             <p className="text-xs text-muted-foreground">Rows</p>
-            <p className="font-medium text-sm">{batch.rowCount}</p>
+            <p className="font-medium text-sm style={{wordWrap: 'break-word'}}">{batch.rowCount}</p>
           </div>
         </div>
       </CardContent>

@@ -1,0 +1,51 @@
+Full Name,Email,Phone,City,Country,Job Title,Department,Salary,Start Date,Status
+Charlie Miller,charlie.miller@example.com,+1-709-282-9946,Toronto,UAE,Software Engineer,Human Resources,115597.11,2023-08-16,On Leave
+Diana Smith,diana.smith@example.com,+1-543-701-5181,Tokyo,Japan,UX Designer,Product,120230.33,2015-10-12,Resigned
+Bob Johnson,bob.johnson@example.com,+1-144-548-1595,New York,France,Data Analyst,Product,111347.73,2019-07-05,On Leave
+Hannah Wilson,hannah.wilson@example.com,+1-521-131-7391,London,France,HR Specialist,Data,65225.51,2016-06-18,Resigned
+Ethan Williams,ethan.williams@example.com,+1-848-106-4193,Tokyo,Japan,Software Engineer,Data,62314.1,2019-10-12,Resigned
+Julia Johnson,julia.johnson@example.com,+1-849-423-6466,New York,USA,Product Manager,Product,84440.8,2022-06-07,Active
+Alice Smith,alice.smith@example.com,+1-181-990-3438,New York,USA,HR Specialist,Data,121882.1,2023-05-17,Active
+Fiona Williams,fiona.williams@example.com,+1-187-839-8731,Toronto,India,UX Designer,Human Resources,77674.52,2015-08-22,Resigned
+Julia Miller,julia.miller@example.com,+1-675-842-4875,Dubai,Japan,HR Specialist,Engineering,119608.13,2015-11-02,Resigned
+Ian Jones,ian.jones@example.com,+1-391-828-5966,Sydney,USA,Product Manager,Product,115721.36,2015-09-02,Resigned
+George Wilson,george.wilson@example.com,+1-947-417-3460,Paris,Canada,Software Engineer,Design,101745.83,2019-04-08,On Leave
+Bob Miller,bob.miller@example.com,+1-844-903-4452,London,Australia,Product Manager,Product,147169.36,2018-10-07,On Leave
+Julia Wilson,julia.wilson@example.com,+1-712-160-9493,Sydney,USA,Software Engineer,Engineering,68294.19,2020-04-10,Active
+Ian Lopez,ian.lopez@example.com,+1-618-218-3873,New York,Japan,HR Specialist,Engineering,72767.35,2017-08-13,Resigned
+Julia Lopez,julia.lopez@example.com,+1-956-494-7772,New York,USA,Software Engineer,Design,109444.9,2015-11-02,On Leave
+Charlie Miller,charlie.miller@example.com,+1-822-505-8298,New York,Australia,HR Specialist,Engineering,114212.51,2018-06-22,Active
+Julia Brown,julia.brown@example.com,+1-433-964-8998,San Francisco,France,HR Specialist,Human Resources,112832.39,2023-11-26,Active
+Julia Jones,julia.jones@example.com,+1-726-457-5112,Berlin,India,UX Designer,Data,95474.07,2018-02-05,On Leave
+Charlie Garcia,charlie.garcia@example.com,+1-475-921-3587,Mumbai,Canada,Data Analyst,Product,100658.33,2017-08-28,Active
+George Jones,george.jones@example.com,+1-719-660-5624,Tokyo,UK,Software Engineer,Engineering,128303.73,2021-04-02,Resigned
+Ian Davis,ian.davis@example.com,+1-507-129-8645,London,Canada,HR Specialist,Engineering,143625.18,2022-12-24,On Leave
+George Lopez,george.lopez@example.com,+1-359-644-3453,Berlin,UAE,Data Analyst,Data,102672.08,2023-06-24,On Leave
+Ian Miller,ian.miller@example.com,+1-798-820-6123,Sydney,Australia,UX Designer,Engineering,139441.42,2020-03-12,Active
+Ethan Lopez,ethan.lopez@example.com,+1-540-351-9794,New York,Japan,Product Manager,Engineering,127775.65,2022-12-09,Resigned
+Alice Williams,alice.williams@example.com,+1-213-150-1266,Dubai,USA,Data Analyst,Product,94194.94,2024-09-10,Resigned
+Fiona Garcia,fiona.garcia@example.com,+1-649-892-2148,San Francisco,UAE,HR Specialist,Engineering,85848.43,2018-04-03,Resigned
+Julia Wilson,julia.wilson@example.com,+1-484-552-8228,Tokyo,UAE,Product Manager,Human Resources,93181.48,2021-11-13,On Leave
+Hannah Johnson,hannah.johnson@example.com,+1-295-212-1474,Berlin,USA,HR Specialist,Engineering,94975.32,2022-01-22,Resigned
+Julia Miller,julia.miller@example.com,+1-296-919-7261,London,India,Product Manager,Product,146495.08,2016-12-23,Resigned
+Charlie Johnson,charlie.johnson@example.com,+1-457-868-9250,Toronto,France,Data Analyst,Engineering,63884.56,2016-07-04,Active
+Bob Miller,bob.miller@example.com,+1-519-607-7642,Paris,India,Software Engineer,Design,121325.53,2016-09-09,Resigned
+Diana Lopez,diana.lopez@example.com,+1-935-521-6000,New York,USA,Product Manager,Human Resources,50496.76,2017-01-23,On Leave
+Hannah Johnson,hannah.johnson@example.com,+1-767-860-3233,Dubai,Japan,Product Manager,Data,73438.56,2020-11-16,Resigned
+George Garcia,george.garcia@example.com,+1-974-112-6461,Tokyo,India,Product Manager,Engineering,132989.31,2016-12-26,Resigned
+Ethan Brown,ethan.brown@example.com,+1-217-784-3402,Paris,India,Data Analyst,Engineering,55768.57,2016-11-07,Resigned
+George Wilson,george.wilson@example.com,+1-827-998-1064,Mumbai,Australia,UX Designer,Human Resources,141920.87,2020-08-08,On Leave
+Julia Brown,julia.brown@example.com,+1-839-821-7249,Tokyo,USA,Software Engineer,Engineering,118443.98,2017-06-27,Resigned
+Charlie Lopez,charlie.lopez@example.com,+1-664-652-4415,Tokyo,India,UX Designer,Design,123465.02,2016-03-13,Resigned
+Bob Johnson,bob.johnson@example.com,+1-625-238-6555,Mumbai,India,Data Analyst,Product,82221.16,2016-10-02,Resigned
+Fiona Brown,fiona.brown@example.com,+1-496-839-8438,London,Germany,Software Engineer,Engineering,108913.86,2023-11-18,Resigned
+Ian Miller,ian.miller@example.com,+1-698-510-5636,Mumbai,Canada,Product Manager,Data,67122.05,2022-01-15,On Leave
+Hannah Jones,hannah.jones@example.com,+1-416-207-6567,Tokyo,Japan,HR Specialist,Product,115782.52,2017-08-01,Resigned
+Diana Smith,diana.smith@example.com,+1-175-347-2091,London,UK,Data Analyst,Data,76842.99,2021-11-09,On Leave
+Charlie Brown,charlie.brown@example.com,+1-908-497-9283,Sydney,France,UX Designer,Product,135696.83,2018-08-19,Active
+Charlie Davis,charlie.davis@example.com,+1-658-222-5968,Dubai,France,Software Engineer,Engineering,116994.8,2022-06-08,Active
+Julia Lopez,julia.lopez@example.com,+1-499-182-2858,Tokyo,Canada,UX Designer,Human Resources,105040.53,2022-09-24,Resigned
+Ian Brown,ian.brown@example.com,+1-675-532-2547,Tokyo,Canada,UX Designer,Engineering,145156.35,2022-01-16,Resigned
+Ian Jones,ian.jones@example.com,+1-514-388-6062,New York,France,Software Engineer,Design,128622.0,2020-10-17,On Leave
+Hannah Jones,hannah.jones@example.com,+1-295-176-7442,Toronto,Germany,Software Engineer,Data,87618.93,2022-07-08,Resigned
+Bob Williams,bob.williams@example.com,+1-711-388-6756,London,Germany,Data Analyst,Data,97339.38,2022-06-17,Active

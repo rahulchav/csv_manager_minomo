@@ -2,7 +2,7 @@ app csv_manager {
   wasp: {
     version: "^0.16.0"
   },
-  title: "csv_manager",
+  title: "CSV Manager",
 
   auth: {
     userEntity: User,
