@@ -1,11 +1,71 @@
-# A Simple ToDo App w/ Typescript & Fullstack Type Saftey ⛑
+# 📊 CSV Manager
 
-## Running it locally
+CSV Manager is an intuitive and powerful tool for managing CSV files in a clean, table-like interface. Uploaded CSV files are treated as **batches**, with a rich UI that allows you to view, edit, and export data seamlessly. The app is mobile responsive and designed for both productivity and clarity.
 
-1. Make sure you have the latest version of [Wasp](https://wasp.sh) installed by running `curl -sSL https://get.wasp.sh/installer.sh | sh` in your terminal.
-2. Run `wasp new <project-name> -t todo-ts` to create a new app using this template.
-3. Run `wasp db migrate-dev`
-4. Run `wasp start`. This will install all dependencies and start the client and server for you :)
-5. Go to `localhost:3000` in your browser (your NodeJS server will be running on port `3001`)
-6. Install the Wasp extension for VSCode to get the best DX
-7. Check out the docs for more info on wasp's [features](https://wasp.sh/docs/language/features) and step-by-step [guides](https://wasp.sh/docs)
+## 🚀 Features
+
+- Table-style UI representation of CSV files
+- CSV import and export support
+- Add/edit/delete rows
+- Click-to-edit cells with keyboard navigation
+- Dark and light mode toggle
+- Fully responsive on mobile and desktop
+
+---
+
+## 📁 Areas & Feature Checklist
+
+### 1. ⚙️ Architecture
+- ✅ Built using [Wasp](https://wasp-lang.dev/) (OpenSaaS framework)
+- ✅ PostgreSQL database
+- ✅ [ShadCN UI](https://ui.shadcn.dev/) component system
+
+---
+
+### 2. 🧩 Database
+- ✅ Tables for `CsvFile` and `CsvRow`
+- ✅ Correct foreign key relationship between files and rows
+- ✅ Proper migration scripts for development and production
+
+---
+
+### 3. 📋 Table Features
+- ✅ Column reordering using drag-and-drop (DnD)
+- ✅ Row selection with checkboxes
+- ✅ Global search and per-column filtering
+- ✅ Click-to-edit with arrow key navigation
+- ✅ Sortable columns (ascending, descending, and default/original)
+- ✅ Column visibility toggling (show/hide)
+- ✅ Pagination with infinite scroll support
+- ✅ Robust UI with edit tracking
+
+---
+
+### 4. ✨ Additional Features
+- ✅ Dark mode / Light mode toggle
+- ✅ Delete CSV batch with confirmation modal
+- ✅ Add new row with auto-indexing
+- ✅ Export selected or all rows back to CSV
+
+---
+
+## 🛠️ Installation
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/rahulchav/csv_manager_minomo.git
+
+# 2. Navigate to the project directory
+cd csv_manager_minomo
+
+# 3. Update your PostgreSQL database connection string
+#    Open the .env file and replace the placeholder with your actual DB URL
+
+# 4. Install dependencies
+npm install
+
+# 5. Run database migrations
+wasp db migrate-dev
+
+# 6. Start the development server
+wasp start
